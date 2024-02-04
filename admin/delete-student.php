@@ -1,8 +1,5 @@
 <?php
 
-//require "../assets/databaza.php";
-//require "../assets/ziak.php";
-//require "../assets/url.php";
 require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Student.php";
@@ -15,6 +12,8 @@ require "../classes/Auth.php";
     if ( !Auth::isLoggedIn() ){
         die("Nepovolený přístup");
     }
+
+    $role = $_SESSION["role"];
 
     //$connection = connectionDB();
     $database = new Database();
@@ -45,6 +44,8 @@ require "../classes/Auth.php";
     <?php require "../assets/admin-header.php"; ?>
 
     <main>
+
+    <?php if($role == "admin"): ?>
         <section class="delete-form">
             <form method="POST">
                 <p>Jste si jisti, že chcete tohoto žáka smazat?</p>
@@ -52,6 +53,13 @@ require "../classes/Auth.php";
                 <a href="one-student.php?id=<?= $_GET['id'] ?>">Zrušit</a>
             </form>
         </section>
+    <?php else: ?>
+        <section>
+            <h1>Obsah tejto stránky je k dispozícií iba administrátorovi.</h1>
+        </section>
+    <?php endif; ?>
+
+        
     </main>
    
     <?php require "../assets/footer.php"; ?>

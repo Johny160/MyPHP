@@ -1,9 +1,5 @@
 <?php
 
-    //require "../assets/databaza.php";
-    //require "../assets/ziak.php";
-    //require "../assets/auth.php";
-    //require "../assets/url.php";
     require "../classes/Database.php";
     require "../classes/Url.php";
     require "../classes/Student.php";
@@ -14,6 +10,8 @@
     if ( !Auth::isLoggedIn() ){
         die("Nepovolený přístup");
     }
+
+    $role = $_SESSION["role"];
 
     //$connection = connectionDB();
     $database = new Database();
@@ -70,7 +68,13 @@
 <body>
     <?php require "../assets/admin-header.php"; ?>
    
-    <?php require "../assets/formular-ziak.php" ?>
+    <?php 
+        if($role == "admin") {
+            require "../assets/formular-ziak.php";
+        } else {
+            echo "<h1>Obsah tejto stránky je k dispozícií iba administrátorovi.</h1>";
+        }
+    ?>
 
     <?php require "../assets/footer.php" ?>
     <script src="../js/header.js"></script>

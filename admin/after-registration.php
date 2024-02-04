@@ -1,8 +1,5 @@
 <?php
 
-//require "../assets/url.php";
-//require "../assets/databaza.php";
-//require "../assets/user.php";
 require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/User.php";
@@ -19,8 +16,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     $second_name = $_POST["second-name"];
     $email = $_POST["email"];
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $role = "user";
 
-    $id = User::createUser($connection, $first_name, $second_name,$email, $password);
+    $id = User::createUser($connection, $first_name, $second_name,$email, $password, $role);
 
    if(!empty($id)){
       // Zabraňuje provedení tzv. fixation attack. Více zde: https://owasp.org/www-community/attacks/Session_fixation
@@ -30,6 +28,9 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
       $_SESSION["is_logged_in"] = true;
       // Nastavení ID uživatele
       $_SESSION["logged_in_user_id"] = $id;
+      //Nastavenie role užívateľa
+      $_SESSION["role"] = $role;
+
 
       Url::redirectUrl("/www1/admin/students.php");
    } else {

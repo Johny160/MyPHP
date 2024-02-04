@@ -1,8 +1,5 @@
 <?php
 
-    //require "../assets/databaza.php";
-    //require "../assets/ziak.php";
-    //require "../assets/auth.php";
     require "../classes/Database.php";
     require "../classes/Student.php";
     require "../classes/Auth.php";
@@ -13,6 +10,8 @@
         die("Nepovolený přístup");
     }
     
+    $role = $_SESSION["role"];
+
     //$connection = connectionDB();
     $database = new Database();
     $connection = $database->connectionDB();
@@ -60,10 +59,13 @@
                     <p>Bydlisko: <?php echo htmlspecialchars($students["college"]) ?></p>
                 </div>
                 
-                <div class="one-student-buttons">
-                    <a href="edit-student.php?id=<?= $students['ID'] ?>">Editovat</a>  
-                    <a href="delete-student.php?id=<?= $students['ID'] ?>">Vymazať</a>
-                </div>
+                <?php if($role === "admin"): ?>
+                    <div class="one-student-buttons">
+                        <a href="edit-student.php?id=<?= $students['ID'] ?>">Editovat</a>  
+                        <a href="delete-student.php?id=<?= $students['ID'] ?>">Vymazať</a>
+                    </div>
+                <?php endif; ?>
+
             <?php endif ?>
         </section> 
   
