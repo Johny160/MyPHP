@@ -1,10 +1,5 @@
 <?php 
 
-    //require "../assets/databaza.php";
-    //require "assets/url.php";
-    //require "../assets/ziak.php";
-    //require "../assets/auth.php";
-    //require "../assets/url.php";
     require "../classes/Database.php";
     require "../classes/Url.php";
     require "../classes/Student.php";
@@ -56,6 +51,8 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-add-student.css">
+    <link rel="stylesheet" href="../query/admin-add-student-query.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Document</title>
 </head>
@@ -64,11 +61,11 @@
     
     <main>
         <section class = "main-heading">
-            <h1>Pridať žiaka</h1>
+            
         </section>
 
         <section class = "add-form">
-            <?php require "../assets/formular-ziak.php" ?>
+            <?php require "../assets/form-student.php" ?>
         </section>
     </main>
     

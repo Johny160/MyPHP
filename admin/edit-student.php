@@ -62,19 +62,24 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-edit-student.css">
+    <link rel="stylesheet" href="../query/admin-edit-student-query.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Document</title>
 </head>
 <body>
     <?php require "../assets/admin-header.php"; ?>
    
-    <?php 
-        if($role == "admin") {
-            require "../assets/formular-ziak.php";
-        } else {
-            echo "<h1>Obsah tejto stránky je k dispozícií iba administrátorovi.</h1>";
-        }
-    ?>
+    <main>
+        <?php 
+            if($role == "admin") {
+                require "../assets/form-student.php";
+            } else {
+                echo "<h1>Obsah tejto stránky je k dispozícií iba administrátorovi.</h1>";
+            }
+        ?>
+    </main>
+    
 
     <?php require "../assets/footer.php" ?>
     <script src="../js/header.js"></script>
