@@ -42,6 +42,10 @@
             <h1>Zoznam žiakov školy</h1>
         </section>
         
+        <section class = "filter">
+            <input type="text" class="filter-input">
+        </section>
+
         <?php if(empty($students)): ?>
             <p>Databáza je prázdna.</p>
         <?php else: ?>
@@ -59,7 +63,7 @@
     </main>
     
     <?php require "../assets/footer.php"; ?>
-
     <script src="../js/header.js"></script>
+    <script src="../js/filter.js"></script>
 </body>
 </html>
