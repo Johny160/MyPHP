@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {}
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-photos.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Photos</title>
 </head>
@@ -47,8 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {}
             <h1>Fotky</h1>
 
             <form action="upload-photos.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="image" require>
-                <input type="submit" name="submit" value="Nahrať obrázok">
+                <label for="choose-file">Vybrať obrázok</label>
+                <input type="file" id="choose-file" name="image" require>
+                <input type="submit" class="upload-file" name="submit" value="Nahrať obrázok">
             </form>
         </section>
 
@@ -59,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {}
                 <div>
                     <img src=<?= "../uploads/" . $user_id . "/" . $one_image["image_name"]?> >
                 </div>
-                <div>
-                    <a href=<?= "../uploads/" . $user_id . "/" . $one_image["image_name"] ?> download="stiahnuty-subor">Stiahnuť</a>
-                    <a href="delete-photo.php?id=<?= $user_id ?>&image_name=<?= $one_image["image_name"] ?>">Smazať</a>
+                <div class="images-btn">
+                    <a class="images-btn-download" href=<?= "../uploads/" . $user_id . "/" . $one_image["image_name"] ?> download="stiahnuty-subor">Stiahnuť</a>
+                    <a class="images-btn-delete" href="delete-photo.php?id=<?= $user_id ?>&image_name=<?= $one_image["image_name"] ?>">Vymazať</a>
                 </div>
             </div>
             <?php endforeach; ?>

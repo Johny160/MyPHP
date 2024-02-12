@@ -37,6 +37,7 @@ require "../classes/Auth.php";
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin-delete-student.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Smazat žáka</title>
 </head>
@@ -49,12 +50,14 @@ require "../classes/Auth.php";
         <section class="delete-form">
             <form method="POST">
                 <p>Jste si jisti, že chcete tohoto žáka smazat?</p>
-                <button>Smazat</button>
-                <a href="one-student.php?id=<?= $_GET['id'] ?>">Zrušit</a>
+                <div class="btns">
+                    <button>Smazat</button>
+                    <a href="one-student.php?id=<?= $_GET['id'] ?>">Zrušit</a>
+                </div>
             </form>
         </section>
     <?php else: ?>
-        <section>
+        <section class="info-box">
             <h1>Obsah tejto stránky je k dispozícií iba administrátorovi.</h1>
         </section>
     <?php endif; ?>
